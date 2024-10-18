@@ -31,55 +31,22 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Cart_id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
+        <Columns>
+            <asp:TemplateField HeaderText="Product Image">
+                <ItemTemplate>
+                    <asp:Image ID="Image1" runat="server" Height="100px" ImageUrl='<%# Eval("pro_image") %>' Width="70px" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:BoundField DataField="pro_name" HeaderText="Product  Code" />
+            <asp:BoundField DataField="pro_price" HeaderText="Price" />
+            <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
+            <asp:BoundField DataField="Total_price" HeaderText="Total Amount" />
+            <asp:CommandField ShowEditButton="True" EditText="UPDATE QUANTITY" />
+            <asp:CommandField ButtonType="Button" ShowDeleteButton="True" />
+        </Columns>
+    </asp:GridView>
     <br />
     <br />
-   <%-- <asp:DataList ID="DataList1" runat="server" CssClass="auto-style6" Height="1108px" Width="1770px">
-        <ItemTemplate>
-            <table class="w-100">
-                <tr>
-                    <td rowspan="4" class="auto-style12">
-                        <asp:Image ID="Image1" runat="server" Height="100px" Width="50px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style7">
-                        <asp:Label ID="Label1" runat="server" Text="Product Code :"></asp:Label>
-                    </td>
-                    <td class="auto-style5">
-                        <asp:Label ID="Label3" runat="server" Text="Quantity"></asp:Label>
-                    </td>
-                    <td class="auto-style10">
-                        <asp:Label ID="Label4" runat="server" Text="Total Price"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style9">
-                        <asp:Label ID="lbl_productCode" runat="server" Text="label"></asp:Label>
-                    </td>
-                    <td rowspan="3">
-                        <asp:Label ID="lbl_Quantity" runat="server" Text="Label"></asp:Label>
-                    </td>
-                    <td rowspan="3" class="auto-style11">
-                        <asp:Label ID="lbl_totalPrice" runat="server" Text="Label"></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style9">
-                        <asp:Label ID="Label2" runat="server" Text="Product Price :"></asp:Label>
-                    </td>
-                    <td>
-                        <asp:Button ID="Button1" runat="server" Text="Confirm" />
-                    </td>
-                  
-                </tr>
-                <tr>
-                    <td class="auto-style12">&nbsp;</td>
-                    <td class="auto-style9">
-                        <asp:Label ID="lbl_producyPrice" runat="server" Text="Label"></asp:Label>
-                    </td>
-                </tr>
-            </table>
-        </ItemTemplate>
-    </asp:DataList>--%>
-      </asp:Content>
+    </asp:Content>
+   

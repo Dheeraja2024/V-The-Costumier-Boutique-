@@ -57,6 +57,8 @@
                     <asp:Label ID="Label4" runat="server" Text="QUANTITY :"></asp:Label>
                     <asp:TextBox ID="txt_count" runat="server" Width="44px"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txt_count" ErrorMessage="* Enter Count of product"></asp:RequiredFieldValidator>
+                    <asp:Label ID="Label6" runat="server" Text="PRODUCTS IN STOCK:"></asp:Label>
+                    <asp:Label ID="Label7" runat="server" Text="Label"></asp:Label>
                 </td>
 
             </tr>
