@@ -28,6 +28,7 @@ namespace WebApplication2.USER
         {
             int productId = Convert.ToInt32(e.CommandArgument);
             Session["productId"] = productId;
+           // Label5.Text = Session["productId"].ToString();
             Response.Redirect("ProductFullDescription.aspx");
         }
     }

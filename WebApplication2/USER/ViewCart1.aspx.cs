@@ -26,7 +26,7 @@ namespace WebApplication2.USER
         public void grid_bind()
         {
            // string fetchCart = "select B.Pro_id,B.pro_image,B.pro_name,B.pro_price,A.Cart_id, A.Quantity,A.Total_price from tbl_Cart A join tbl_product B on A.fk_product=B.Pro_id where A.fk_userId='2'";//" + Session["uid"] + "
-            string fetchCart = "select tbl_product.pro_image,tbl_product.pro_name,tbl_product.pro_price,tbl_Cart.Cart_id, tbl_Cart.Quantity,tbl_Cart.Total_price from tbl_Cart  join tbl_product  on tbl_Cart.fk_product=tbl_product.Pro_id where tbl_Cart.fk_userId='2'";//" + Session["uid"] + "
+            string fetchCart = "select tbl_product.pro_image,tbl_product.pro_name,tbl_product.pro_price,tbl_Cart.Cart_id, tbl_Cart.Quantity,tbl_Cart.Total_price from tbl_Cart  join tbl_product  on tbl_Cart.fk_product=tbl_product.Pro_id where tbl_Cart.fk_userId='" + Session["uid"] + "'";//
             DataSet ds = objcls.Fun_Adapter(fetchCart);
             GridView1.DataSource = ds;
             GridView1.DataBind();
@@ -82,6 +82,20 @@ namespace WebApplication2.USER
 
             }
             
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string grandTotalStr = "select sum(Total_price) from tbl_Cart where fk_userId='"+Session["uid"]+"'";
+             string grandTotal=objcls.Fun_exs_Scalar(grandTotalStr);
+
+            string sdate = DateTime.Now.ToString("yyyy-MM-dd");
+            string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,'"+sdate+"','Ordered') SELECT fk_product, fk_userId, Quantity, Total_priceFROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
+             int rowsEffected=objcls.Fun_exe_NonQuery(insOrder);
+
+            string insBill = "insert into  tbl_bill values ('"+Session["uid"] +"','"+sdate+"','"+grandTotal+"')";
+            int rowsEffected1 = objcls.Fun_exe_NonQuery(insBill);
+
         }
     }
 

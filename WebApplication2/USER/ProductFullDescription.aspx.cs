@@ -26,11 +26,15 @@ namespace WebApplication2.USER
                     lblProductPrice.Text = dr["pro_price"].ToString();
                     lblProductStatus.Text = dr["pro_status"].ToString();
                 }
+                string stock = "select pro_stock from tbl_product where Pro_id='" + Session["productId"] + "'";
+                string productStock = objcls.Fun_exs_Scalar(stock);
+                Label7.Text = productStock;
             }
+
 
         }
 
-        /* protected void Button1_Click(object sender, EventArgs e)
+         protected void Button1_Click(object sender, EventArgs e)
          {
              string stock = "select pro_stock from tbl_product where Pro_id='" + Session["productId"] + "'";
              string productStock = objcls.Fun_exs_Scalar(stock);
@@ -55,12 +59,19 @@ namespace WebApplication2.USER
                  int singleProductAmount = Convert.ToInt32(SingleProductAmount1);
                  int count = Convert.ToInt32(txt_count.Text);
                  int totalAmount = singleProductAmount * count;
+                //checking session value is null
+                if (Session["uid"] == null || Session["productId"] == null)
+                {
+                    Label5.Text = "Session variables are not set.";
+                    // Handle the case when the session variables are null
+                    throw new InvalidOperationException("Session variables are not set.");
+                }
 
-                 // checking if existing user already put same product in cart then adding count to that same product
-                 string productExisting = "Select Cart_id from tbl_Cart where fk_userid='" + Session["uid"] + "' and fk_product='" + Session["productId"] + "' ";
-                 string existing = objcls.Fun_exs_Scalar(productExisting);
-                 if (existing == "")
-                 {
+                // checking if existing user already put same product in cart then adding count to that same product
+                //string productExisting = "Select Cart_id from tbl_Cart where fk_userid='" + Session["uid"] + "' and fk_product='" + Session["productId"] + "' ";
+                // string existing = objcls.Fun_exs_Scalar(productExisting);
+                // if (existing == "")
+                // {
 
                      string InsCart = "insert into tbl_Cart values('" + newId + "','" + Session["productId"] + "','" + Session["uid"] + "','" + count + "','" + totalAmount + "')";
                      int insCount = objcls.Fun_exe_NonQuery(InsCart);
@@ -70,7 +81,7 @@ namespace WebApplication2.USER
                          // txt_count.Text = " ";
                          Response.Redirect("ViewCart1.aspx");
                      }
-                 }
+                 //}
 
                  else
                  {
@@ -79,8 +90,8 @@ namespace WebApplication2.USER
                      string newQuantity = currentQuantity + txt_count.Text;
                      int newAmount = Convert.ToInt32(newQuantity) * singleProductAmount;
                      string UpdtCart = "update tbl_Cart set Quantity='" + newQuantity + "',Total_price='" + newAmount + "' where fk_userid='" + Session["uid"] + "' and fk_product='" + Session["productId"] + "' ";
-                     int insCount = objcls.Fun_exe_NonQuery(UpdtCart);
-                     if (insCount == 1)
+                     int insCount1 = objcls.Fun_exe_NonQuery(UpdtCart);
+                     if (insCount1 == 1)
                      {
                          Label5.Text = "ITEM ADDED TO CART";
                          // txt_count.Text = " ";
@@ -98,96 +109,97 @@ namespace WebApplication2.USER
              {
                  Label5.Text = "KINDLY CHECK STOCK BEFORE ORDERING.....OUT OF STOCK.";
              }
-         }*/
+         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            string productStock = GetProductStock(Session["productId"].ToString());
-            Label7.Text = productStock;
+        //protected void Button1_Click(object sender, EventArgs e)
+        //{
+        //    string productIdStr = Session["productId"].ToString();
+        //    string productStock = GetProductStock(productIdStr);
+        //    Label7.Text = productStock;
 
-            if (int.Parse(txt_count.Text) <= int.Parse(productStock))
-            {
-                int newId = GetNewCartId();
-                int singleProductAmount = GetProductPrice(Session["productId"].ToString());
-                int count = int.Parse(txt_count.Text);
-                int totalAmount = singleProductAmount * count;
+        //    if (int.Parse(txt_count.Text) <= int.Parse(productStock))
+        //    {
+        //        int newId = GetNewCartId();
+        //        int singleProductAmount = GetProductPrice(Session["productId"].ToString());
+        //        int count = int.Parse(txt_count.Text);
+        //        int totalAmount = singleProductAmount * count;
 
-                string existing = CheckIfProductExists(Session["uid"].ToString(), Session["productId"].ToString());
+        //        string existing = CheckIfProductExists(Session["uid"].ToString(), Session["productId"].ToString());
 
-                if (string.IsNullOrEmpty(existing))
-                {
-                    AddNewProductToCart(newId, Session["productId"].ToString(), Session["uid"].ToString(), count, totalAmount);
-                }
-                else
-                {
-                    UpdateExistingProductInCart(Session["uid"].ToString(), Session["productId"].ToString(), singleProductAmount, count);
-                }
-            }
-            else
-            {
-                Label5.Text = "KINDLY CHECK STOCK BEFORE ORDERING.....OUT OF STOCK.";
-            }
-        }
+        //        if (string.IsNullOrEmpty(existing))
+        //        {
+        //            AddNewProductToCart(newId, Session["productId"].ToString(), Session["uid"].ToString(), count, totalAmount);
+        //        }
+        //        else
+        //        {
+        //            UpdateExistingProductInCart(Session["uid"].ToString(), Session["productId"].ToString(), singleProductAmount, count);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        Label5.Text = "KINDLY CHECK STOCK BEFORE ORDERING.....OUT OF STOCK.";
+        //    }
+        //}
 
-        private string GetProductStock(string productId)
-        {
-            string stockQuery = "SELECT pro_stock FROM tbl_product WHERE Pro_id=@ProductId";
-            return objcls.Fun_exs_Scalar(stockQuery);
-        }
+        //private string GetProductStock(string productId)
+        //{
+        //    string stockQuery = "SELECT pro_stock FROM tbl_product WHERE Pro_id=ProductId";
+        //    return objcls.Fun_exs_Scalar(stockQuery);
+        //}
 
-        private int GetNewCartId()
-        {
-            string sqlQuery = "SELECT MAX(Cart_id) FROM tbl_Cart";
-            string lastId = objcls.Fun_exs_Scalar(sqlQuery);
-            return string.IsNullOrEmpty(lastId) ? 1 : int.Parse(lastId) + 1;
-        }
+        //private int GetNewCartId()
+        //{
+        //    string sqlQuery = "SELECT MAX(Cart_id) FROM tbl_Cart";
+        //    string lastId = objcls.Fun_exs_Scalar(sqlQuery);
+        //    return string.IsNullOrEmpty(lastId) ? 1 : int.Parse(lastId) + 1;
+        //}
 
-        private int GetProductPrice(string productId)
-        {
-            string productPriceQuery = "SELECT pro_price FROM tbl_product WHERE Pro_id=@ProductId";
-            string priceStr = objcls.Fun_exs_Scalar(productPriceQuery);
-            return int.Parse(priceStr);
-        }
+        //private int GetProductPrice(string productId)
+        //{
+        //    string productPriceQuery = "SELECT pro_price FROM tbl_product WHERE Pro_id=@ProductId";
+        //    string priceStr = objcls.Fun_exs_Scalar(productPriceQuery);
+        //    return int.Parse(priceStr);
+        //}
 
-        private string CheckIfProductExists(string userId, string productId)
-        {
-            string productExistingQuery = "SELECT Cart_id FROM tbl_Cart WHERE fk_userid=@UserId AND fk_product=@ProductId";
-            return objcls.Fun_exs_Scalar(productExistingQuery);
-        }
+        //private string CheckIfProductExists(string userId, string productId)
+        //{
+        //    string productExistingQuery = "SELECT Cart_id FROM tbl_Cart WHERE fk_userid=@UserId AND fk_product=@ProductId";
+        //    return objcls.Fun_exs_Scalar(productExistingQuery);
+        //}
 
-        private void AddNewProductToCart(int newId, string productId, string userId, int count, int totalAmount)
-        {
-            string insertCart = "INSERT INTO tbl_Cart VALUES(@NewId, @ProductId, @UserId, @Count, @TotalAmount)";
-            int insCount = objcls.Fun_exe_NonQuery(insertCart);
+        //private void AddNewProductToCart(int newId, string productId, string userId, int count, int totalAmount)
+        //{
+        //    string insertCart = "INSERT INTO tbl_Cart VALUES(@NewId, @ProductId, @UserId, @Count, @TotalAmount)";
+        //    int insCount = objcls.Fun_exe_NonQuery(insertCart);
 
-            if (insCount == 1)
-            {
-                Label5.Text = "ITEM ADDED TO CART";
-                Response.Redirect("ViewCart1.aspx");
-            }
-        }
+        //    if (insCount == 1)
+        //    {
+        //        Label5.Text = "ITEM ADDED TO CART";
+        //        Response.Redirect("ViewCart1.aspx");
+        //    }
+        //}
 
-        private void UpdateExistingProductInCart(string userId, string productId, int singleProductAmount, int count)
-        {
-            string existingProductCountQuery = "SELECT Quantity FROM tbl_Cart WHERE fk_userid=@UserId AND fk_product=@ProductId";
-            string currentQuantityStr = objcls.Fun_exs_Scalar(existingProductCountQuery);
-            int currentQuantity = int.Parse(currentQuantityStr);
-            int newQuantity = currentQuantity + count;
-            int newAmount = newQuantity * singleProductAmount;
+        //private void UpdateExistingProductInCart(string userId, string productId, int singleProductAmount, int count)
+        //{
+        //    string existingProductCountQuery = "SELECT Quantity FROM tbl_Cart WHERE fk_userid=@UserId AND fk_product=@ProductId";
+        //    string currentQuantityStr = objcls.Fun_exs_Scalar(existingProductCountQuery);
+        //    int currentQuantity = int.Parse(currentQuantityStr);
+        //    int newQuantity = currentQuantity + count;
+        //    int newAmount = newQuantity * singleProductAmount;
 
-            string updateCart = "UPDATE tbl_Cart SET Quantity=@NewQuantity, Total_price=@NewAmount WHERE fk_userid=@UserId AND fk_product=@ProductId";
-            int updateCount = objcls.Fun_exe_NonQuery(updateCart);
+        //    string updateCart = "UPDATE tbl_Cart SET Quantity=@NewQuantity, Total_price=@NewAmount WHERE fk_userid=@UserId AND fk_product=@ProductId";
+        //    int updateCount = objcls.Fun_exe_NonQuery(updateCart);
 
-            if (updateCount == 1)
-            {
-                Label5.Text = "ITEM ADDED TO CART";
-                Response.Redirect("ViewCart1.aspx");
-            }
-            else
-            {
-                Label5.Text = "NOT INSERTED...ERROR!";
-            }
+        //    if (updateCount == 1)
+        //    {
+        //        Label5.Text = "ITEM ADDED TO CART";
+        //        Response.Redirect("ViewCart1.aspx");
+        //    }
+        //    else
+        //    {
+        //        Label5.Text = "NOT INSERTED...ERROR!";
+        //    }
 
-        }
+        //}
     }
 }

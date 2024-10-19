@@ -49,5 +49,7 @@
                 </table>
             </ItemTemplate>
         </asp:DataList>
+         <br />
+         <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
     </div>
 </asp:Content>

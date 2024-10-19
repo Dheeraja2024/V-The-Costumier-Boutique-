@@ -1,35 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/USER/User.Master" AutoEventWireup="true" CodeBehind="ViewCart1.aspx.cs" Inherits="WebApplication2.USER.ViewCart1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style type="text/css">
-        .auto-style3 {
-            width: 180px;
-        }
-        .auto-style5 {
-            width: 52px;
-            height: 72px;
-        }
-        .auto-style6 {
-            margin-right: 0px;
-        }
-        .auto-style7 {
-            width: 172px;
-            height: 72px;
-        }
-        .auto-style9 {
-            width: 172px;
-        }
-        .auto-style10 {
-            width: 165px;
-            height: 72px;
-        }
-        .auto-style11 {
-            width: 165px;
-        }
-        .auto-style12 {
-            width: 57px;
-        }
-    </style>
-</asp:Content>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Cart_id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
         <Columns>
@@ -47,6 +18,9 @@
         </Columns>
     </asp:GridView>
     <br />
+    <asp:Label ID="Label1" runat="server" Text="Click Button to Continue shopping"></asp:Label>   
+    &nbsp;&nbsp;
+    <asp:Button ID="Button1" runat="server" Text="CONFIRM PRODUCTS AND CONTINUE PAYMENT" OnClick="Button1_Click" />
     <br />
     </asp:Content>
    
