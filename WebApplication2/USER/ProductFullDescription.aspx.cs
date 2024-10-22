@@ -68,12 +68,12 @@ namespace WebApplication2.USER
                 }
 
                 // checking if existing user already put same product in cart then adding count to that same product
-                //string productExisting = "Select Cart_id from tbl_Cart where fk_userid='" + Session["uid"] + "' and fk_product='" + Session["productId"] + "' ";
-                // string existing = objcls.Fun_exs_Scalar(productExisting);
-                // if (existing == "")
-                // {
+                string productExisting = "Select Cart_id from tbl_Cart where fk_userid='" + Session["uid"] + "' and fk_product='" + Session["productId"] + "' ";
+                string existing = objcls.Fun_exs_Scalar(productExisting);
+                if (existing == " ")
+                {
 
-                     string InsCart = "insert into tbl_Cart values('" + newId + "','" + Session["productId"] + "','" + Session["uid"] + "','" + count + "','" + totalAmount + "')";
+                    string InsCart = "insert into tbl_Cart values('" + newId + "','" + Session["productId"] + "','" + Session["uid"] + "','" + count + "','" + totalAmount + "')";
                      int insCount = objcls.Fun_exe_NonQuery(InsCart);
                      if (insCount == 1)
                      {
@@ -81,7 +81,7 @@ namespace WebApplication2.USER
                          // txt_count.Text = " ";
                          Response.Redirect("ViewCart1.aspx");
                      }
-                 //}
+                }
 
                  else
                  {

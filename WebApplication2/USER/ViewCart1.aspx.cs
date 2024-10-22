@@ -90,8 +90,17 @@ namespace WebApplication2.USER
              string grandTotal=objcls.Fun_exs_Scalar(grandTotalStr);
 
             string sdate = DateTime.Now.ToString("yyyy-MM-dd");
-            string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,'"+sdate+"','Ordered') SELECT fk_product, fk_userId, Quantity, Total_priceFROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
+            string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,Date,Status) SELECT fk_product, fk_userId, Quantity, Total_price ,'"+sdate+"' ,'Available' FROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
              int rowsEffected=objcls.Fun_exe_NonQuery(insOrder);
+            if(rowsEffected==1)
+            {
+                string delete = "delete from tbl_Cart where fk_userId='" + Session["uid"] + "'";
+                int j= objcls.Fun_exe_NonQuery(delete);
+                if(j==1)
+                {
+                    Label2.Text = "ITEMS SUCUSFULLY MOVED TO ORDER TABLE";
+                }
+            }
 
             string insBill = "insert into  tbl_bill values ('"+Session["uid"] +"','"+sdate+"','"+grandTotal+"')";
             int rowsEffected1 = objcls.Fun_exe_NonQuery(insBill);
@@ -100,3 +109,7 @@ namespace WebApplication2.USER
     }
 
 }
+
+
+
+
