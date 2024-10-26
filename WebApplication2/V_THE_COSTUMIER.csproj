@@ -44,6 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -101,6 +103,13 @@
     <Content Include="CATEGORY IMAGE\VISHU1.jpg" />
     <Content Include="CATEGORY IMAGE\VISHU2.jpg" />
     <Content Include="CATEGORY IMAGE\VISHU4.jpg" />
+    <None Include="Connected Services\GetUpdateBalanceService\Service.disco" />
+    <None Include="Connected Services\GetUpdateBalanceService\configuration91.svcinfo" />
+    <None Include="Connected Services\GetUpdateBalanceService\configuration.svcinfo" />
+    <None Include="Connected Services\GetUpdateBalanceService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="images\slider_1.jpg" />
     <Content Include="images\v_coutier logo.png" />
     <Content Include="Login.aspx" />
@@ -150,11 +159,12 @@
     <Content Include="USER TEMPLATE\mail\contact.js" />
     <Content Include="USER TEMPLATE\mail\contact.php" />
     <Content Include="USER TEMPLATE\mail\jqBootstrapValidation.min.js" />
+    <Content Include="USER\BillPayment.aspx" />
+    <Content Include="USER\CustomerBill.aspx" />
     <Content Include="USER\CustomerHome.aspx" />
     <Content Include="USER\ProductFullDescription.aspx" />
     <Content Include="USER\UserRegistration.aspx" />
     <Content Include="USER\USER_PRODUCT_VIEW.aspx" />
-    <Content Include="USER\ViewCart.aspx" />
     <Content Include="USER\ViewCart1.aspx" />
     <Content Include="Web.config" />
     <Content Include="ADMIN\PRODUCTS_ADMIN.aspx" />
@@ -188,6 +198,11 @@
     <Compile Include="ADMIN\CATEGORY_EDITING.aspx.designer.cs">
       <DependentUpon>CATEGORY_EDITING.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\GetUpdateBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionClass.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -197,6 +212,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="USER\BillPayment.aspx.cs">
+      <DependentUpon>BillPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="USER\BillPayment.aspx.designer.cs">
+      <DependentUpon>BillPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="USER\CustomerBill.aspx.cs">
+      <DependentUpon>CustomerBill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="USER\CustomerBill.aspx.designer.cs">
+      <DependentUpon>CustomerBill.aspx</DependentUpon>
+    </Compile>
     <Compile Include="USER\CustomerHome.aspx.cs">
       <DependentUpon>CustomerHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,13 +268,6 @@
     <Compile Include="USER\USER_PRODUCT_VIEW.aspx.designer.cs">
       <DependentUpon>USER_PRODUCT_VIEW.aspx</DependentUpon>
     </Compile>
-    <Compile Include="USER\ViewCart.aspx.cs">
-      <DependentUpon>ViewCart.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="USER\ViewCart.aspx.designer.cs">
-      <DependentUpon>ViewCart.aspx</DependentUpon>
-    </Compile>
     <Compile Include="USER\ViewCart1.aspx.cs">
       <DependentUpon>ViewCart1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,6 +277,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\GetUpdateBalanceService\Service.wsdl" />
+    <None Include="Connected Services\GetUpdateBalanceService\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\GetUpdateBalanceService\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <Content Include="USER TEMPLATE\lib\owlcarousel\LICENSE" />
     <Content Include="USER TEMPLATE\scss\bootstrap\scss\bootstrap-grid.scss" />
@@ -359,6 +388,12 @@
   <ItemGroup>
     <Folder Include="ADMIN TEMPLATE\" />
     <Folder Include="PRODUCTS IMAGE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\GetUpdateBalanceService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

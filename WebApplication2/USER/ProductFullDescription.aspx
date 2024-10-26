@@ -17,7 +17,7 @@
         <table class="auto-style2">
             <tr>
                 <td rowspan="6" class="auto-style3">
-                    <asp:Image ID="Image1" runat="server" Height="343px" Width="300px" /></td>
+                    <asp:Image ID="Image1" runat="server" Height="520px" Width="300px" /></td>
                 <td class="auto-style4">&nbsp;</td>
                 <td>
                     <asp:Label ID="lblProductName" runat="server" Text="Label"></asp:Label>

@@ -69,9 +69,7 @@ namespace WebApplication2.USER
             string productPrice = "Select pro_price from tbl_product where Pro_id='"+productId+ "' "; 
             string SingleProductAmount1 = objcls.Fun_exs_Scalar(productPrice);
 
-            // int singleProductAmount = Convert.ToInt32(SingleProductAmount1)
-            // int Quantity=Convert.ToInt32(txtQuantity.Text);
-
+            //Calculating Amount for added product
             int updatedAmount = Convert.ToInt32(SingleProductAmount1) *Convert.ToInt32(txtQuantity.Text);
             string latestUpdate = "Update tbl_Cart set  Quantity='" + txtQuantity.Text + "' ,Total_price='" + updatedAmount + "' where Cart_id='"+getId+"'";
              int m = objcls.Fun_exe_NonQuery(latestUpdate);
@@ -92,20 +90,73 @@ namespace WebApplication2.USER
             string sdate = DateTime.Now.ToString("yyyy-MM-dd");
             string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,Date,Status) SELECT fk_product, fk_userId, Quantity, Total_price ,'"+sdate+"' ,'Available' FROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
              int rowsEffected=objcls.Fun_exe_NonQuery(insOrder);
-            if(rowsEffected==1)
+            if(rowsEffected>=1)
             {
                 string delete = "delete from tbl_Cart where fk_userId='" + Session["uid"] + "'";
                 int j= objcls.Fun_exe_NonQuery(delete);
-                if(j==1)
+                if(j>=1)
                 {
                     Label2.Text = "ITEMS SUCUSFULLY MOVED TO ORDER TABLE";
+
+                    
+                }
+                string insBill = "insert into  tbl_bill values ('" + Session["uid"] + "','" + sdate + "','" + grandTotal + "')";
+                int rowsEffected1 = objcls.Fun_exe_NonQuery(insBill);
+                if (rowsEffected1 == 1)
+                {
+                    Response.Redirect("CustomerBill.aspx");
                 }
             }
 
-            string insBill = "insert into  tbl_bill values ('"+Session["uid"] +"','"+sdate+"','"+grandTotal+"')";
-            int rowsEffected1 = objcls.Fun_exe_NonQuery(insBill);
-
         }
+        //code for reference.other students code
+        //public void moveFromCartToOderBill()
+        //{
+        //    // Retrieve cart items and place order
+        //    string s1 = "SELECT MAX(Cart_Id) FROM Cart_tab";
+        //    string cartid = obj1.fun_exescalar(s1);
+        //    int cart = Convert.ToInt32(cartid);
+
+        //    int grandTotal = 0;
+
+        //    for (int i = 1; i <= cart; i++)
+        //    {
+        //        // Retrieve cart item details
+        //        string s2 = "SELECT * FROM Cart_tab WHERE Cart_Id = " + i;
+        //        SqlDataReader dr = obj1.fun_exeReader(s2);
+
+        //        int userid = 0;
+        //        int quantity = 0;
+        //        int productid = 0;
+        //        int totalprice = 0;
+
+        //        while (dr.Read())
+        //        {
+        //            userid = Convert.ToInt32(dr["User_Id"]);
+        //            productid = Convert.ToInt32(dr["Product_Id"]);
+        //            quantity = Convert.ToInt32(dr["Quantity"]);
+        //            totalprice = Convert.ToInt32(dr["Total_Price"]);
+        //        }
+
+        //        // Insert order details
+        //        string ordins = "INSERT INTO Order_tab VALUES ('" + Session["uid"] + "','" + productid + "','" + quantity + "','" + totalprice + "','Confirmed','" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+        //        int i2 = obj1.Fun_exenonquery(ordins);
+
+        //        grandTotal += totalprice;
+
+        //        // Delete cart item
+        //        string del = "DELETE FROM Cart_tab WHERE Cart_Id = " + i;
+        //        int i3 = obj1.Fun_exenonquery(del);
+
+        //        dr.Close();
+        //    }
+
+        //    // Insert bill details
+        //    string bil = "INSERT INTO Bill_table VALUES ('" + Session["uid"] + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "','" + grandTotal + "')";
+        //    int i4 = obj1.Fun_exenonquery(bil);
+
+        //    Response.Redirect("Viewbill.aspx");
+        //}
     }
 
 }

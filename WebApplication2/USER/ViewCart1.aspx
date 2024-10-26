@@ -20,7 +20,7 @@
         </Columns>
     </asp:GridView>
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Click Button to Continue shopping"></asp:Label>   
+    <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/USER/CustomerHome.aspx">BACK TO SHOPING</asp:LinkButton>
     &nbsp;&nbsp;
     <asp:Button ID="Button1" runat="server" Text="CONFIRM PRODUCTS AND CONTINUE PAYMENT" OnClick="Button1_Click" />
     <br />

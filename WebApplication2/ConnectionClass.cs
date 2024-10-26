@@ -14,7 +14,7 @@ namespace WebApplication2
 
         public ConnectionClass()
         {
-            con = new SqlConnection(@"server=DESKTOP-ISLO3KG\SQLEXPRESS ;database=E-COMMERCE ;Integrated security=true");
+            con = new SqlConnection(@"server=DESKTOP-ISLO3KG\SQLEXPRESS;database=E-COMMERCE ;Integrated security=true");
         }
 
         public int Fun_exe_NonQuery(string sqlquery)

@@ -18,19 +18,28 @@
             width: 248px;
             height: 159px;
         }
+         .auto-style8 {
+             height: 1670px;
+         }
+         .auto-style9 {
+             width: 20%;
+             float: left;
+             height: 1231px;
+             background-color:brown;
+         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div>
+    <div style="background-color:burlywood" class="auto-style8">
        
-        <div>
+        <div style="width:80%;float:right;">
             <br />
             <br />
             <asp:Label ID="Label3" runat="server" Text="SELECT CATEGORY" Font-Names="Mongolian Baiti" Font-Size="XX-Large" ForeColor="#000066"></asp:Label>
             <br />
             <br />
            
-            <asp:DataList ID="DataList1" runat="server" Width="995px" RepeatColumns="3" CellPadding="0" ForeColor="#CC0099">
+            <asp:DataList ID="DataList1" runat="server" Width="995px" RepeatColumns="4" CellPadding="0" ForeColor="#CC0099">
                
                 <ItemTemplate>
                    
@@ -67,6 +76,12 @@
                 </ItemTemplate>
             </asp:DataList>
 
+        </div>
+        <div class="auto-style9">
+            <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="XX-Large" PostBackUrl="~/USER/ViewCart1.aspx">VIEW CART</asp:LinkButton>
+            <br />
+            <br />
+            <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/USER/CustomerBill.aspx">PRODUCT BILL </asp:LinkButton>
         </div>
     </div>
 
