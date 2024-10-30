@@ -120,14 +120,17 @@
                 <center class="auto-style5">
                 <br />
                 <br /><br />
-                <h2> <asp:Label ID="lbl_paymentSuccessMessage" runat="server" ></asp:Label></h2>
+                    
+                <h2> <asp:Label ID="lbl_paymentSuccessMessage" runat="server" Text=""></asp:Label></h2>
+                      <br />
+                    <br />
+                    <asp:Button runat="server" Text="VIEW ORDERS" OnClick="Unnamed1_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button runat="server" Text="BACK TO HOME PAGE" OnClick="Unnamed2_Click" />
                    
-                    <br />
-                    <br />
+                  
                    
                 
-                  
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    
+                    
               
                      <%-- <asp:Button  runat="server" Text="VIEW ORDER DETAILS" OnClick="Unnamed1_Click" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

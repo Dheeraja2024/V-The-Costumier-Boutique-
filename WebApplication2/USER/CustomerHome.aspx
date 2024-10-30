@@ -30,7 +30,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div style="background-color:burlywood" class="auto-style8">
+    <div class="auto-style8">
        
         <div style="width:80%;float:right;">
             <br />
@@ -82,6 +82,9 @@
             <br />
             <br />
             <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/USER/CustomerBill.aspx">PRODUCT BILL </asp:LinkButton>
+            <br />
+            <br />
+            <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/USER/ViewOrde.aspx">LinkButton</asp:LinkButton>
         </div>
     </div>
 

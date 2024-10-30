@@ -84,6 +84,8 @@ namespace WebApplication2.USER
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //Response.Redirect("CustomerBill.aspx");
+
             string grandTotalStr = "select sum(Total_price) from tbl_Cart where fk_userId='"+Session["uid"]+"'";
              string grandTotal=objcls.Fun_exs_Scalar(grandTotalStr);
 

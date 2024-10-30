@@ -110,6 +110,13 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Connected Services\ServiceReference1\Service.disco" />
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="images\slider_1.jpg" />
     <Content Include="images\v_coutier logo.png" />
     <Content Include="Login.aspx" />
@@ -166,6 +173,7 @@
     <Content Include="USER\UserRegistration.aspx" />
     <Content Include="USER\USER_PRODUCT_VIEW.aspx" />
     <Content Include="USER\ViewCart1.aspx" />
+    <Content Include="USER\ViewOrde.aspx" />
     <Content Include="Web.config" />
     <Content Include="ADMIN\PRODUCTS_ADMIN.aspx" />
   </ItemGroup>
@@ -199,6 +207,11 @@
       <DependentUpon>CATEGORY_EDITING.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\GetUpdateBalanceService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -275,6 +288,13 @@
     <Compile Include="USER\ViewCart1.aspx.designer.cs">
       <DependentUpon>ViewCart1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="USER\ViewOrde.aspx.cs">
+      <DependentUpon>ViewOrde.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="USER\ViewOrde.aspx.designer.cs">
+      <DependentUpon>ViewOrde.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\GetUpdateBalanceService\Service.wsdl" />
@@ -282,6 +302,13 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\GetUpdateBalanceService\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service.wsdl" />
+    <None Include="Connected Services\ServiceReference1\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -394,6 +421,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\GetUpdateBalanceService\" />
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

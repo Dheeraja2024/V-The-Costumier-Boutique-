@@ -30,8 +30,8 @@ namespace WebApplication2.USER
                 lbl_invoice.Text = Guid.NewGuid().ToString();
                 string billDate = DateTime.Now.ToString("yyyy,MM,dd");
                 lbl_date.Text = billDate;
-                string grandTotalStr = "select Grand_total from tbl_bill where User_id='" + Session["uid"] + "'";//'" + Session["uid"] + "'
-                string grandTotal = objcls.Fun_exs_Scalar(grandTotalStr);
+                string grandTotalStr = "select Grand_total from tbl_bill where User_id='" + Session["uid"] + "' ";//'" + Session["uid"] + "'
+               string grandTotal = objcls.Fun_exs_Scalar(grandTotalStr);
                 lbl_total.Text = grandTotal;
                 int gstAmount = (Convert.ToInt32(grandTotal) * 5) / 100;
                 // int gstAmount = ((5 / 100) * Convert.ToInt32( grandTotal));
@@ -43,11 +43,15 @@ namespace WebApplication2.USER
 
         public void grid_bind()
         {
-             string fetchCart = "select B.Pro_id,B.pro_name,B.pro_price,A.Order_id, A.Quantity,A.Total_price from tbl_Order A join tbl_product B on A.fk_productId=B.Pro_id where A.fk_user_id='" + Session["uid"] + "'";//" + Session["uid"] + "
-           
+            string fetchCart = "select tbl_product.pro_image,tbl_product.pro_name,tbl_product.pro_price,tbl_Order.Order_id, tbl_Order.Quantity,tbl_Order.Total_Price from tbl_Order  join tbl_product  on tbl_Order.fk_productId=tbl_product.Pro_id where tbl_Order.fk_user_id='" + Session["uid"] + "' and Status='Available'";//
             DataSet ds = objcls.Fun_Adapter(fetchCart);
             GridView1.DataSource = ds;
             GridView1.DataBind();
+            // string fetchCart = "select B.Pro_id,B.pro_name,B.pro_price,A.Cart_id, A.Quantity,A.Total_price from tbl_Cart A join tbl_product B on A.fk_product =B.Pro_id where A.fk_userid='" + Session["uid"] + "'";//" + Session["uid"] + "
+
+            //DataSet ds = objcls.Fun_Adapter(fetchCart);
+            //GridView1.DataSource = ds;
+            //GridView1.DataBind();
 
         }
 
