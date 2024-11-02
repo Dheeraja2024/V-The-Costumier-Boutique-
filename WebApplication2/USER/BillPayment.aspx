@@ -125,16 +125,13 @@
                       <br />
                     <br />
                     <asp:Button runat="server" Text="VIEW ORDERS" OnClick="Unnamed1_Click" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button runat="server" Text="BACK TO HOME PAGE" OnClick="Unnamed2_Click" />
-                   
-                  
+                    
                    
                 
                     
                     
               
-                     <%-- <asp:Button  runat="server" Text="VIEW ORDER DETAILS" OnClick="Unnamed1_Click" />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Button runat="server" Text="BACK TO SHOPING" OnClick="Unnamed2_Click" CssClass="form-check-label" />--%>
+                  
                     </center>
             </asp:Panel>
         </div>

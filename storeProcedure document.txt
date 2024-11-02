@@ -1,0 +1,10 @@
+CREATE PROCEDURE sp_insertFeedback
+@name varchar(50),
+@email varchar(150),
+@feedback varchar(350),
+@ProCode varchar(150),
+@ImageUrl varchar(350),
+@phoneNo varchar(50)
+as begin
+insert into [dbo].[tbl_feedback] values(@name,@email,@feedback,@ProCode,@ImageUrl,@phoneNo,'received')
+end

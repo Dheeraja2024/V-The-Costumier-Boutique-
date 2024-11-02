@@ -90,7 +90,7 @@ namespace WebApplication2.USER
              string grandTotal=objcls.Fun_exs_Scalar(grandTotalStr);
 
             string sdate = DateTime.Now.ToString("yyyy-MM-dd");
-            string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,Date,Status) SELECT fk_product, fk_userId, Quantity, Total_price ,'"+sdate+"' ,'Available' FROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
+            string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,Date,Status) SELECT fk_product, fk_userId, Quantity, Total_price ,'"+sdate+"' ,'Ordered' FROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
              int rowsEffected=objcls.Fun_exe_NonQuery(insOrder);
             if(rowsEffected>=1)
             {
@@ -124,7 +124,7 @@ namespace WebApplication2.USER
         //    for (int i = 1; i <= cart; i++)
         //    {
         //        // Retrieve cart item details
-        //        string s2 = "SELECT * FROM Cart_tab WHERE Cart_Id = " + i;
+        //        string s2 = "SELECT * FROM Cart_tab WHERE Cart_Id =' " + i+"'";
         //        SqlDataReader dr = obj1.fun_exeReader(s2);
 
         //        int userid = 0;

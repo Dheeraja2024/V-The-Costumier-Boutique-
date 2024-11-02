@@ -40,11 +40,11 @@ namespace WebApplication2.USER
                 string operationStatus = ob1.UpdateBalance(Convert.ToInt32(Session["uid"].ToString()), accountNumber, Session["totalAmount"].ToString());
                 if (operationStatus == "sucess")
                 {
-                    string updateAvailability = "update tbl_Order set Status='Ordered' where fk_user_id='" + Session["uid"] + "' ";
+                    string updateAvailability = "update tbl_Order set Status='Payment Paid' where fk_user_id='" + Session["uid"] + "' ";
                     int i= objcls.Fun_exe_NonQuery(updateAvailability);
                     if (i >= 1)
                     {
-                        string updateStock = " UPDATE p SET p.pro_stock = p.pro_stock - o.Quantity FROM tbl_product p JOIN tbl_Order o ON p.Pro_id = o.fk_productId WHERE o.fk_user_id ='" + Session["uid"] + "' AND o.Status = 'Ordered'";
+                        string updateStock = " UPDATE p SET p.pro_stock = p.pro_stock - o.Quantity FROM tbl_product p JOIN tbl_Order o ON p.Pro_id = o.fk_productId WHERE o.fk_user_id ='" + Session["uid"] + "' AND o.Status = 'Payment Paid'";
                         int j=objcls.Fun_exe_NonQuery(updateStock);
                         if(j>=1)
                         {

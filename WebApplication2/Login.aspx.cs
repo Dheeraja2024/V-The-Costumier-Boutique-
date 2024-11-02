@@ -39,7 +39,8 @@ namespace WebApplication2
                     }
                     else if (log_type1 == "USER")
                     {
-                        Response.Redirect("~/USER/CustomerHome.aspx");
+                        //Response.Redirect("~/USER/CustomerHome.aspx");
+                        Label4.Text = Session["uid"].ToString();
                     }
 
                 }

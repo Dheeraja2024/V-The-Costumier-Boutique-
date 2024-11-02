@@ -85,6 +85,9 @@
             <br />
             <br />
             <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/USER/ViewOrde.aspx">LinkButton</asp:LinkButton>
+            <br />
+            <br />
+            <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/USER/feedbackform.aspx">FeedbackLinkButton</asp:LinkButton>
         </div>
     </div>
 
