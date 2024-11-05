@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Net.Mail;
+using System.Net;
+using System.Text;
 
 namespace WebApplication2.ADMIN
 {
@@ -17,10 +19,11 @@ namespace WebApplication2.ADMIN
         {
             if (!IsPostBack)
             {
+                string Id = Session["f_id"].ToString();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "sp_ViewFeedbackById";
-                cmd.Parameters.AddWithValue("@id", Session["f_id"].ToString());
+                cmd.Parameters.AddWithValue("@id",Id );
                 SqlDataReader dr = objcls.Fn_Reader(cmd);
                 while (dr.Read())
                 {
@@ -28,7 +31,7 @@ namespace WebApplication2.ADMIN
                     lbl_email.Text = dr["Email"].ToString();
                     lbl_feedbackMessage.Text = dr["Feedback"].ToString();
                     lbl_productCode.Text = dr["ProductCode"].ToString();
-                    lbl_phoneNo.Text = dr["MobileNumber"].ToString();
+                    lbl_phoneNo.Text = dr["Phone"].ToString();
                     if (string.IsNullOrEmpty(dr["ImageUrl"].ToString()))
                     {
                         Image1.ImageUrl = "~/feedback images/noImageUploaded.png";
@@ -51,11 +54,22 @@ namespace WebApplication2.ADMIN
         protected void Button2_Click(object sender, EventArgs e)
         {
             string mailSubject = "Thank You for Your Feedback! We Appreciate Your Input";
-            string companyMail = "dheerajasuvcreations@gmail.com ";
-            string gmailPasswors = "December7@2022";
-            string customerName= " "
+            string companyMail = "dheerajacri@gmail.com ";
+            string gmailPasswors = "bmjv xwrg cwlg ugbg";
+            string fid = Session["f_id"].ToString();
+            SqlCommand cmd1 = new SqlCommand();
+            cmd1.CommandType = CommandType.StoredProcedure;
+            cmd1.CommandText = "sp_ViewFeedbackById";
+            cmd1.Parameters.AddWithValue("@id", fid);
+            SqlDataReader dr = objcls.Fn_Reader(cmd1);
+            while (dr.Read())
+            {
+                string customerName = dr["Name"].ToString();
+                string customerMail = dr["Email"].ToString();
+                string mailBody = txt_replyFeedback.Text;
 
-           // SendEmail2(string yourName, string yourGmailUserName, string yourGmailPassword, string toName, string toEmail, string subject, string body)
+                SendEmail2("Dhanuja K P", companyMail, gmailPasswors, customerName, customerMail, mailSubject, mailBody);
+            }
         }
 
         public static void SendEmail2(string yourName, string yourGmailUserName, string yourGmailPassword, string toName, string toEmail, string subject, string body)
@@ -79,6 +93,7 @@ namespace WebApplication2.ADMIN
             try
             {
                 client.Send(message);
+                
             }
 
             catch (Exception ex)

@@ -19,6 +19,7 @@ namespace WebApplication2.ADMIN
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_ViewFeedback";
+
             DataSet ds = objcls.Fn_Adapter(cmd);
             GridView1.DataSource = ds;
             GridView1.DataBind();

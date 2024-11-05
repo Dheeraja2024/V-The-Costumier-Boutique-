@@ -19,7 +19,7 @@ namespace WebApplication2
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string sel = "select count(reg_id) from tbl_Login where Username= '" + txt_username.Text + "' and Password='" + txt_password.Text + "' ";
+            string sel = "select count(Reg_id) from tbl_Login where Username= '" + txt_username.Text + "' and Password='" + txt_password.Text + "' ";
             string u_count1 = objcls.Fun_exs_Scalar(sel);
             int u_count = Convert.ToInt32(u_count1);
             if (u_count == 1)
@@ -39,8 +39,7 @@ namespace WebApplication2
                     }
                     else if (log_type1 == "USER")
                     {
-                        //Response.Redirect("~/USER/CustomerHome.aspx");
-                        Label4.Text = Session["uid"].ToString();
+                        Response.Redirect("~/USER/CustomerHome.aspx");
                     }
 
                 }

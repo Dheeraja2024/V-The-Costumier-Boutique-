@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/USER/User.Master" AutoEventWireup="true" CodeBehind="CATEGORY_ADMIN.aspx.cs" Inherits="WebApplication2.ADMIN.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ADMIN TEMPLATE/AdimDesign.Master" AutoEventWireup="true" CodeBehind="CATEGORY_ADMIN.aspx.cs" Inherits="WebApplication2.ADMIN.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
           .box1 {

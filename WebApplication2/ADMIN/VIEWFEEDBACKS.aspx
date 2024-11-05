@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/USER/User.Master" AutoEventWireup="true" CodeBehind="VIEWFEEDBACKS.aspx.cs" Inherits="WebApplication2.ADMIN.VIEWFEEDBACKS" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ADMIN TEMPLATE/AdimDesign.Master" AutoEventWireup="true" CodeBehind="VIEWFEEDBACKS.aspx.cs" Inherits="WebApplication2.ADMIN.VIEWFEEDBACKS" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style2 {
@@ -15,7 +15,7 @@
             <asp:BoundField DataField="f_id" HeaderText="Sr No." />
             <asp:BoundField DataField="Name" HeaderText="Customer Name" />
             <asp:BoundField DataField="Email" HeaderText="Email" />
-            <asp:BoundField DataField="Status" HeaderText="Reply Status" />
+            <asp:BoundField DataField="AdminAction" HeaderText="Reply Status" />
             <asp:CommandField SelectText="REPLY" ShowSelectButton="True" />
         </Columns>
     </asp:GridView>

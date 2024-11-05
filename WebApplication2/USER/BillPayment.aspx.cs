@@ -35,9 +35,9 @@ namespace WebApplication2.USER
             string balance = obj.GetAccountBalance(uid, accountNumber);
             if(Convert.ToInt32( balance)>= Convert.ToInt32( Session["totalAmount"].ToString()))
             {
-                
-                GetUpdateBalanceService.ServiceClient ob1 = new GetUpdateBalanceService.ServiceClient();
-                string operationStatus = ob1.UpdateBalance(Convert.ToInt32(Session["uid"].ToString()), accountNumber, Session["totalAmount"].ToString());
+
+                ServiceReference1.ServiceClient obj1 = new ServiceReference1.ServiceClient();
+                string operationStatus = obj1.UpdateBalance(Convert.ToInt32(Session["uid"].ToString()), accountNumber, Session["totalAmount"].ToString());
                 if (operationStatus == "sucess")
                 {
                     string updateAvailability = "update tbl_Order set Status='Payment Paid' where fk_user_id='" + Session["uid"] + "' ";

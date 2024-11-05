@@ -105,13 +105,7 @@
     <Content Include="CATEGORY IMAGE\VISHU1.jpg" />
     <Content Include="CATEGORY IMAGE\VISHU2.jpg" />
     <Content Include="CATEGORY IMAGE\VISHU4.jpg" />
-    <None Include="Connected Services\GetUpdateBalanceService\Service.disco" />
-    <None Include="Connected Services\GetUpdateBalanceService\configuration91.svcinfo" />
-    <None Include="Connected Services\GetUpdateBalanceService\configuration.svcinfo" />
-    <None Include="Connected Services\GetUpdateBalanceService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <Content Include="ADMIN TEMPLATE\AdimDesign.Master" />
     <None Include="Connected Services\ServiceReference1\Service.disco" />
     <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
     <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
@@ -177,10 +171,18 @@
     <Content Include="USER\USER_PRODUCT_VIEW.aspx" />
     <Content Include="USER\ViewCart1.aspx" />
     <Content Include="USER\ViewOrde.aspx" />
+    <Content Include="USER\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="ADMIN\PRODUCTS_ADMIN.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADMIN TEMPLATE\AdimDesign.Master.cs">
+      <DependentUpon>AdimDesign.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ADMIN TEMPLATE\AdimDesign.Master.designer.cs">
+      <DependentUpon>AdimDesign.Master</DependentUpon>
+    </Compile>
     <Compile Include="ADMIN\ADMIN_HOME.aspx.cs">
       <DependentUpon>ADMIN_HOME.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -223,11 +225,6 @@
     <Compile Include="ADMIN\VIEWFEEDBACKS.aspx.designer.cs">
       <DependentUpon>VIEWFEEDBACKS.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\GetUpdateBalanceService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -243,6 +240,13 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SP_ConnectionClass.cs" />
+    <Compile Include="USER TEMPLATE\UserMasterDesign.Master.cs">
+      <DependentUpon>UserMasterDesign.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="USER TEMPLATE\UserMasterDesign.Master.designer.cs">
+      <DependentUpon>UserMasterDesign.Master</DependentUpon>
+    </Compile>
     <Compile Include="USER\BillPayment.aspx.cs">
       <DependentUpon>BillPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -320,15 +324,15 @@
     <Compile Include="USER\ViewOrde.aspx.designer.cs">
       <DependentUpon>ViewOrde.aspx</DependentUpon>
     </Compile>
+    <Compile Include="USER\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="USER\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\GetUpdateBalanceService\Service.wsdl" />
-    <None Include="Connected Services\GetUpdateBalanceService\Service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\GetUpdateBalanceService\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Connected Services\ServiceReference1\Service.wsdl" />
     <None Include="Connected Services\ServiceReference1\Service.xsd">
       <SubType>Designer</SubType>
@@ -430,6 +434,7 @@
     <Content Include="USER TEMPLATE\scss\bootstrap\scss\_variables.scss" />
     <Content Include="USER TEMPLATE\scss\style.scss" />
     <Content Include="USER\User.Master" />
+    <Content Include="USER TEMPLATE\UserMasterDesign.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -438,7 +443,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ADMIN TEMPLATE\" />
     <Folder Include="feedback images\" />
     <Folder Include="PRODUCTS IMAGE\" />
   </ItemGroup>
@@ -446,7 +450,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\GetUpdateBalanceService\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
   </ItemGroup>
   <PropertyGroup>

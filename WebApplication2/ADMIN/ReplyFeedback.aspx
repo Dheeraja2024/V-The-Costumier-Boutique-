@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/USER/User.Master" AutoEventWireup="true" CodeBehind="ReplyFeedback.aspx.cs" Inherits="WebApplication2.ADMIN.ReplyFeedback" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ADMIN TEMPLATE/AdimDesign.Master" AutoEventWireup="true" CodeBehind="ReplyFeedback.aspx.cs" Inherits="WebApplication2.ADMIN.ReplyFeedback" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style2 {
@@ -114,6 +114,7 @@
         <div class="auto-style4">
             <center>
                 <br />
+                <asp:Label ID="Label9" runat="server" Text="Label"></asp:Label>
                 <br />
                 <br />
             <div class="auto-style12">

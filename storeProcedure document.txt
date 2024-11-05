@@ -1,3 +1,18 @@
+create procedure Sp_fetchCount
+@Username varchar(50),
+@password varchar(50)
+as begin
+select count(reg_id) from tbl_Login where Username= @Username and Password=@password;
+end
+
+create procedure Sp_fetchId_Logtype
+@Username varchar(50),
+@password varchar(50)
+as begin
+select reg_id,Log_type from tbl_Login where Username=@Username and Password=@password; 
+end
+
+
 CREATE PROCEDURE sp_insertFeedback
 @name varchar(50),
 @email varchar(150),
@@ -8,3 +23,4 @@ CREATE PROCEDURE sp_insertFeedback
 as begin
 insert into [dbo].[tbl_feedback] values(@name,@email,@feedback,@ProCode,@ImageUrl,@phoneNo,'received')
 end
+

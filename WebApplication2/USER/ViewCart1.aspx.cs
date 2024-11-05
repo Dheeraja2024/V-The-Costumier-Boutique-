@@ -90,6 +90,7 @@ namespace WebApplication2.USER
              string grandTotal=objcls.Fun_exs_Scalar(grandTotalStr);
 
             string sdate = DateTime.Now.ToString("yyyy-MM-dd");
+            Session["Order_date"] = sdate;
             string insOrder = "INSERT INTO tbl_Order (fk_productId, fk_user_id, Quantity, Total_price,Date,Status) SELECT fk_product, fk_userId, Quantity, Total_price ,'"+sdate+"' ,'Ordered' FROM tbl_Cart where fk_userId ='"+Session["uid"]+"' ";
              int rowsEffected=objcls.Fun_exe_NonQuery(insOrder);
             if(rowsEffected>=1)

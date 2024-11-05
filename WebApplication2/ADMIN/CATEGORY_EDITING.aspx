@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/USER/User.Master" AutoEventWireup="true" CodeBehind="CATEGORY_EDITING.aspx.cs" Inherits="WebApplication2.ADMIN.WebForm2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ADMIN TEMPLATE/AdimDesign.Master" AutoEventWireup="true" CodeBehind="CATEGORY_EDITING.aspx.cs" Inherits="WebApplication2.ADMIN.WebForm2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
         .auto-style6 {

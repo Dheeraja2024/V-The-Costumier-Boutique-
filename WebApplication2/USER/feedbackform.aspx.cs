@@ -23,7 +23,7 @@ namespace WebApplication2.USER
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "sp_insertFeedback";
             string UserId = Session["uid"].ToString();
-            cmd.Parameters.AddWithValue("@name", UserId);
+            cmd.Parameters.AddWithValue("@CusId", UserId);
            
             cmd.Parameters.AddWithValue("@feedback", txt_feedback.Text);
           

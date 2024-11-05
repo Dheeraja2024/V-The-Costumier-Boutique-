@@ -77,18 +77,7 @@
             </asp:DataList>
 
         </div>
-        <div class="auto-style9">
-            <asp:LinkButton ID="LinkButton1" runat="server" Font-Bold="True" Font-Size="XX-Large" PostBackUrl="~/USER/ViewCart1.aspx">VIEW CART</asp:LinkButton>
-            <br />
-            <br />
-            <asp:LinkButton ID="LinkButton2" runat="server" PostBackUrl="~/USER/CustomerBill.aspx">PRODUCT BILL </asp:LinkButton>
-            <br />
-            <br />
-            <asp:LinkButton ID="LinkButton3" runat="server" PostBackUrl="~/USER/ViewOrde.aspx">LinkButton</asp:LinkButton>
-            <br />
-            <br />
-            <asp:LinkButton ID="LinkButton4" runat="server" PostBackUrl="~/USER/feedbackform.aspx">FeedbackLinkButton</asp:LinkButton>
-        </div>
+      
     </div>
 
 </asp:Content>
