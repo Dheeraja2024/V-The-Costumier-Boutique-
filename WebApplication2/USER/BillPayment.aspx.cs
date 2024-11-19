@@ -30,13 +30,13 @@ namespace WebApplication2.USER
                 txt_ifscCode.Text = " ";
             }
             int uid = Convert.ToInt32(Session["uid"].ToString());
-            ServiceReference1.ServiceClient obj = new ServiceReference1.ServiceClient();
+            ServiceReference2.ServiceClient obj = new ServiceReference2.ServiceClient();
             //GetUpdateBalanceService.ServiceClient obj = new GetUpdateBalanceService.ServiceClient();
             string balance = obj.GetAccountBalance(uid, accountNumber);
             if(Convert.ToInt32( balance)>= Convert.ToInt32( Session["totalAmount"].ToString()))
             {
 
-                ServiceReference1.ServiceClient obj1 = new ServiceReference1.ServiceClient();
+                ServiceReference2.ServiceClient obj1 = new ServiceReference2.ServiceClient();
                 string operationStatus = obj1.UpdateBalance(Convert.ToInt32(Session["uid"].ToString()), accountNumber, Session["totalAmount"].ToString());
                 if (operationStatus == "sucess")
                 {

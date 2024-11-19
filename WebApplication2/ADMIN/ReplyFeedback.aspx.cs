@@ -68,11 +68,19 @@ namespace WebApplication2.ADMIN
                 string customerMail = dr["Email"].ToString();
                 string mailBody = txt_replyFeedback.Text;
 
-                SendEmail2("Dhanuja K P", companyMail, gmailPasswors, customerName, customerMail, mailSubject, mailBody);
+               string result= SendEmail2("Dhanuja K P", companyMail, gmailPasswors, customerName, customerMail, mailSubject, mailBody);
+                if (result == "send")
+                {
+                    Label9.Text = "SEND MAIL SUCCESSFULLY...";
+                }
+                else
+                {
+                    Label9.Text = "NOT SEND...TRY AGAIN.....";
+                }
             }
         }
 
-        public static void SendEmail2(string yourName, string yourGmailUserName, string yourGmailPassword, string toName, string toEmail, string subject, string body)
+        public  string SendEmail2(string yourName, string yourGmailUserName, string yourGmailPassword, string toName, string toEmail, string subject, string body)
 
         {
             string to = toEmail; //To address    
@@ -93,12 +101,15 @@ namespace WebApplication2.ADMIN
             try
             {
                 client.Send(message);
+                string q = "send";
+                return q;
                 
             }
 
             catch (Exception ex)
             {
                 throw ex;
+                return ex.Message;
             }
         }
     }

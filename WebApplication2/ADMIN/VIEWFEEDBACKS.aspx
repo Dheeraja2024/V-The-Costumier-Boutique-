@@ -4,13 +4,17 @@
         .auto-style2 {
             width: 1441px;
             margin-right: 815px;
+            background-color:black;
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="auto-style2">
+        <br />
+        <br />
+        <br />
         <center>
-    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" Width="849px" AutoGenerateColumns="False">
+    <asp:GridView ID="GridView1" runat="server" OnSelectedIndexChanging="GridView1_SelectedIndexChanging" Width="849px" AutoGenerateColumns="False" BackColor="White">
         <Columns>
             <asp:BoundField DataField="f_id" HeaderText="Sr No." />
             <asp:BoundField DataField="Name" HeaderText="Customer Name" />

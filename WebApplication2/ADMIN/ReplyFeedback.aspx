@@ -4,12 +4,7 @@
         .auto-style2 {
             height: 620px;
             margin-top: 0px;
-        }
-        .auto-style3 {
-            width: 50%;
-            float: left;
-            height: 606px;
-             background-color:cadetblue;
+            background-color:black;
         }
         .auto-style4 {
             width: 50%;
@@ -25,8 +20,7 @@
             padding-left:50px;
         }
         .auto-style7 {
-            width: 71%;
-            height: 248px;
+            height: 409px;
            
         }
         .auto-style9 {
@@ -45,11 +39,25 @@
         .auto-style13 {
             width: 272px;
         }
+        .auto-style14 {
+            width: 507px
+        }
+        .auto-style15 {
+            width: 231px;
+        }
+        .auto-style16 {
+            width: 398px;
+            float: left;
+            height: 599px;
+            background-color: cadetblue;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <center>
     <div class="auto-style2">
-        <div class="auto-style3">
+         <center>
+        <div class="auto-style16">
            <br /><br />
             <center>
             <table class="auto-style6">
@@ -96,7 +104,7 @@
                         <td rowspan="2" class="auto-style10">&nbsp;</td>
                         <td class="auto-style11">
                             <br />
-                            <asp:Image ID="Image1" runat="server" width="200px" Height="146px"/>
+                            <asp:Image ID="Image1" runat="server" width="155px" Height="146px"/>
                         </td>
                     </tr>
                     <tr>
@@ -119,7 +127,7 @@
                 <br />
             <div class="auto-style12">
 
-                <table class="w-100">
+                <table class="auto-style14">
                     <tr>
                         <td colspan="2">
                             <asp:TextBox ID="txt_replyFeedback" runat="server" TextMode="MultiLine" Height="273px" Width="524px"></asp:TextBox></td>
@@ -127,7 +135,7 @@
                     </tr>
                     <tr>
                         <td class="auto-style13">&nbsp;</td>
-                        <td>
+                        <td class="auto-style15">
                             <asp:Button ID="Button1" runat="server" Text="Back" OnClick="Button1_Click" />
                         &nbsp;
                             <asp:Button ID="Button2" runat="server" Text="Send Mail" OnClick="Button2_Click" />
@@ -138,5 +146,7 @@
             </div>
                 </center>
         </div>
+            </center>
     </div>
+       </center>
 </asp:Content>
